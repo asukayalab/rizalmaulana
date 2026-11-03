@@ -1,0 +1,41 @@
+name: rizal-design-local
+services:
+  db:
+    image: mariadb:10.11
+    environment:
+      MARIADB_DATABASE: rizal_preview
+      MARIADB_USER: preview
+      MARIADB_PASSWORD: local-preview-only
+      MARIADB_RANDOM_ROOT_PASSWORD: '1'
+    volumes: [database:/var/lib/mysql]
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  wordpress:
+    image: wordpress:php8.3-apache
+    ports: ['127.0.0.1:8096:80']
+    environment: &wp-env
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: preview
+      WORDPRESS_DB_PASSWORD: local-preview-only
+      WORDPRESS_DB_NAME: rizal_preview
+      WORDPRESS_CONFIG_EXTRA: "define('WP_ENVIRONMENT_TYPE', 'local'); define('FS_METHOD', 'direct');"
+    depends_on:
+      db: {condition: service_healthy}
+    volumes: [wordpress:/var/www/html]
+  cli:
+    image: wordpress:cli-php8.3
+    user: '33:33'
+    environment: *wp-env
+    depends_on:
+      db: {condition: service_healthy}
+    volumes:
+      - wordpress:/var/www/html
+      - ../.local:/fixtures:ro
+      - ../../../release/rizalmaulana-alpha1:/package:ro
+      - ./:/project-scripts:ro
+volumes:
+  database:
+  wordpress:

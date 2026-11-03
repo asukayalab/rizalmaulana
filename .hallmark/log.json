@@ -1,0 +1,33 @@
+[
+ {
+  "shape": "editorial portfolio",
+  "theme": "custom",
+  "axes": "light/grotesk-heavy/neutral",
+  "hero": "architecture with left white mist",
+  "nav": "centred folding panel",
+  "footer": "oversized masthead",
+  "imagery": "user reference photographs",
+  "photos": [],
+  "entry": "Rizal Maulana homepage",
+  "fingerprint": "rizal-pdf-eight-sections",
+  "sections": [
+   "Hero",
+   "Profile and statistics",
+   "Selected projects",
+   "Spirit kerja",
+   "Services",
+   "Knowledge",
+   "Collaboration",
+   "Footer"
+  ],
+  "signature": "architecture emerging from white mist",
+  "waived": [
+   "1",
+   "38iii",
+   "83"
+  ],
+  "prompt": "Implement supplied Rizal homepage PDF and motion scenario as Falcon child theme; preserve maintenance.",
+  "date": "2026-11-03",
+  "mode": "build"
+ }
+]

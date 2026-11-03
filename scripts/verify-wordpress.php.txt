@@ -1,0 +1,39 @@
+<?php
+/** Read/render and reversible regression checks on the dedicated local preview only. */
+use FalconWF\Content\Blueprint;
+use FalconWF\Content\Repository;
+use FalconWF\Content\Schema;
+if (wp_get_environment_type() !== 'local' || get_option('home') !== 'http://localhost:8096' || get_bloginfo('name') !== 'Rizal Design Preview') { throw new RuntimeException('Refusing test outside dedicated local preview.'); }
+function rizal_assert($condition, string $message): void { if (!$condition) { throw new RuntimeException($message); } echo "PASS: $message\n"; }
+wp_set_current_user(1);
+$state = Blueprint::state('rizalmaulana'); $home = $state['roles']['home']; $maintenance = $state['roles']['maintenance'];
+rizal_assert(count($state['roles']) === 7, 'seven Page roles mapped');
+rizal_assert(get_page_template_slug($home) === 'page-home.php' && get_page_template_slug($maintenance) === 'page-maintenance.php', 'home and maintenance remain independent named templates');
+rizal_assert(!isset(Schema::custom('page', $state['roles']['contact'])['rh_hero_title']), 'home fields do not leak into Contact');
+rizal_assert(isset(Schema::custom('page', $maintenance)['rm_hero_title']) && !isset(Schema::custom('page', $maintenance)['rh_hero_title']), 'maintenance retains rm_* contract only');
+$homeBefore = get_option('page_on_front'); $themeBefore = get_stylesheet(); $before = Schema::values($home, 'page');
+$repo = FalconWF\Bootstrap::instance()->content;
+$stale = $repo->saveFields($home, 'stale-revision', ['rh_hero_title' => 'SHOULD NOT WRITE']);
+rizal_assert(is_wp_error($stale) && $stale->get_error_code() === 'FWF_CONFLICT', 'stale writes rejected by Falcon owner');
+$GLOBALS['post'] = get_post($home); setup_postdata($GLOBALS['post']);
+rizal_assert(count(Rizal\projects()) === 5, 'five selected projects resolve');
+$ids = get_option('rizal_fixture_projects'); $id = $ids[0];
+try {
+ wp_update_post(['ID' => $id, 'post_status' => 'private']); wp_set_current_user(0);
+ rizal_assert(count(Rizal\projects()) === 4, 'private selected project hidden from visitors');
+ wp_set_current_user(1); wp_update_post(['ID' => $id, 'post_status' => 'publish', 'post_password' => 'fixture-protected']); wp_set_current_user(0);
+ rizal_assert(count(Rizal\projects()) === 4, 'password-protected selected project hidden');
+} finally { wp_set_current_user(1); wp_update_post(['ID' => $id, 'post_status' => 'publish', 'post_password' => '']); }
+$fields = Schema::values($home, 'page'); $fields['rh_hero_title'] = 'R&D <script>alert("fixture")</script>';
+try {
+ $result = $repo->saveFields($home, Repository::metadataRevision($home, 'page'), $fields); rizal_assert(!is_wp_error($result), 'public text saved through Repository');
+ ob_start(); include get_stylesheet_directory() . '/template-parts/home.php'; $markup = ob_get_clean();
+ rizal_assert(!str_contains($markup, '<script>alert(') && str_contains($markup, esc_html(Rizal\text('rh_hero_title'))) && str_contains($markup, 'R&amp;D'), 'homepage escapes editable text');
+} finally { $repo->saveFields($home, Repository::metadataRevision($home, 'page'), $before); }
+$schema = json_decode(file_get_contents(get_stylesheet_directory() . '/falcon-blueprint.json'), true);
+ob_start(); include get_stylesheet_directory() . '/template-parts/home.php'; $complete = ob_get_clean();
+rizal_assert(str_contains($complete, 'Mari Mulai Percakapan.') && str_contains($complete, 'RIZAL MAULANA ENGINEERING') && str_contains($complete, 'Lihat Tulisan') && str_contains($complete, 'Lihat Edukasi'), 'all later sections render without losing the WordPress Page context');
+rizal_assert(Blueprint::validateDocument($schema) === true, 'installed blueprint passes Falcon runtime validation');
+rizal_assert(get_option('page_on_front') === $homeBefore && get_stylesheet() === $themeBefore && Schema::values($home, 'page') === $before, 'regression checks preserve theme homepage and field values');
+wp_reset_postdata();
+echo "LOCAL REGRESSION COMPLETE\n";

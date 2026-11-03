@@ -1,0 +1,930 @@
+{
+  "schema": 1,
+  "project_id": "@@PROJECT_ID@@",
+  "version": "@@PROJECT_VERSION@@",
+  "website": {
+    "name": "Rizal Maulana Engineering",
+    "purpose": "Identitas profesional, karya, layanan dan pengetahuan Rizal Maulana.",
+    "audience": "Arsitek, pemilik proyek, kontraktor, rekan profesional dan mahasiswa",
+    "language": "id"
+  },
+  "pages": [
+    {
+      "key": "home",
+      "title": "Beranda",
+      "slug": "beranda",
+      "template": "page-home.php"
+    },
+    {
+      "key": "profile",
+      "title": "Profil",
+      "slug": "profil",
+      "template": "default"
+    },
+    {
+      "key": "services",
+      "title": "Layanan",
+      "slug": "layanan",
+      "template": "default"
+    },
+    {
+      "key": "work",
+      "title": "Karya",
+      "slug": "karya",
+      "template": "default"
+    },
+    {
+      "key": "education",
+      "title": "Edukasi",
+      "slug": "edukasi",
+      "template": "default"
+    },
+    {
+      "key": "contact",
+      "title": "Kontak",
+      "slug": "kontak",
+      "template": "default"
+    },
+    {
+      "key": "maintenance",
+      "title": "Maintenance",
+      "slug": "maintenance",
+      "template": "page-maintenance.php"
+    }
+  ],
+  "definitions": {
+    "groups": {
+      "rm_maintenance": {
+        "label": "Isi halaman maintenance Rizal",
+        "active": true,
+        "types": [
+          "page"
+        ],
+        "page_roles": [
+          "maintenance"
+        ],
+        "fields": [
+          {
+            "key": "rm_hero_title",
+            "label": "Nama pada hero",
+            "kind": "text",
+            "default": "Rizal Maulana",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_brand_suffix",
+            "label": "Akhiran nama",
+            "kind": "text",
+            "default": "Engineering",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_tagline",
+            "label": "Tagline",
+            "kind": "text",
+            "default": "Precision in Every Structure",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_profession_1",
+            "label": "Profesi 1",
+            "kind": "text",
+            "default": "Structural Engineer",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_profession_2",
+            "label": "Profesi 2",
+            "kind": "text",
+            "default": "Civil Engineering Lecturer",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_profession_3",
+            "label": "Profesi 3",
+            "kind": "text",
+            "default": "Researcher",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_whatsapp",
+            "label": "Tautan WhatsApp",
+            "kind": "url",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_line_1",
+            "label": "Pesan baris 1",
+            "kind": "text",
+            "default": "The full experience is being crafted",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_line_2",
+            "label": "Pesan baris 2",
+            "kind": "text",
+            "default": "with the same care as every structure we design.",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_launch",
+            "label": "Status peluncuran",
+            "kind": "text",
+            "default": "Launching Soon",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_instagram",
+            "label": "Tautan Instagram",
+            "kind": "url",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_footer",
+            "label": "Copyright",
+            "kind": "text",
+            "default": "© Rizal Maulana Engineering",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_domain",
+            "label": "Domain tampilan",
+            "kind": "text",
+            "default": "rizalmaulana.id",
+            "public": true,
+            "required": false,
+            "help": "Isi referensi; periksa sebelum publikasi."
+          },
+          {
+            "key": "rm_email",
+            "label": "Email maintenance",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "help": "Alamat email saja, tanpa mailto:. Diperiksa dengan is_email sebelum ditampilkan."
+          }
+        ]
+      },
+      "rh_hero": {
+        "label": "Beranda — Hero",
+        "active": true,
+        "types": [
+          "page"
+        ],
+        "fields": [
+          {
+            "key": "rh_hero_title",
+            "label": "Headline — kepastian struktur",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Kepastian Struktur."
+          },
+          {
+            "key": "rh_hero_secondary",
+            "label": "Headline — kebebasan arsitektur",
+            "kind": "textarea",
+            "default": "Kebebasan Arsitektur.",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rh_hero_description",
+            "label": "Pengantar",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Solusi rekayasa struktur yang menghubungkan keamanan, efisiensi, dan ekspresi arsitektur."
+          },
+          {
+            "key": "rh_hero_cta",
+            "label": "Label tombol kontak",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Diskusi Proyek"
+          },
+          {
+            "key": "rh_hero_image",
+            "label": "Foto hero",
+            "kind": "image",
+            "public": true,
+            "required": false
+          }
+        ],
+        "page_roles": [
+          "home"
+        ]
+      },
+      "rh_profile": {
+        "label": "Beranda — Profil dan statistik",
+        "active": true,
+        "types": [
+          "page"
+        ],
+        "fields": [
+          {
+            "key": "rh_profile_title",
+            "label": "Judul profil",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Menghadirkan Struktur yang Bernilai Lebih."
+          },
+          {
+            "key": "rh_profile_description",
+            "label": "Pengantar profil",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Menggabungkan analisis teknik, pemahaman arsitektur, dan pengalaman lapangan untuk menghasilkan solusi struktur yang aman, efisien, dan kontekstual."
+          },
+          {
+            "key": "rh_profile_cta",
+            "label": "Label tombol profil",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Lihat Profil"
+          },
+          {
+            "key": "rh_profile_image",
+            "label": "Foto profil",
+            "kind": "image",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rh_profile_alt",
+            "label": "Deskripsi foto profil",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": ""
+          },
+          {
+            "key": "rh_stat_1_value",
+            "label": "Statistik 1 — nilai terverifikasi",
+            "kind": "integer",
+            "public": true,
+            "required": false,
+            "help": "Kosong/0 menyembunyikan statistik. Isi hanya angka yang sudah disetujui.",
+            "default": 0
+          },
+          {
+            "key": "rh_stat_1_label",
+            "label": "Statistik 1 — label",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Tahun Berkarya"
+          },
+          {
+            "key": "rh_stat_1_suffix",
+            "label": "Statistik 1 — akhiran",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "+"
+          },
+          {
+            "key": "rh_stat_2_value",
+            "label": "Statistik 2 — nilai terverifikasi",
+            "kind": "integer",
+            "public": true,
+            "required": false,
+            "help": "Kosong/0 menyembunyikan statistik. Isi hanya angka yang sudah disetujui.",
+            "default": 0
+          },
+          {
+            "key": "rh_stat_2_label",
+            "label": "Statistik 2 — label",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Proyek"
+          },
+          {
+            "key": "rh_stat_2_suffix",
+            "label": "Statistik 2 — akhiran",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "+"
+          },
+          {
+            "key": "rh_stat_3_value",
+            "label": "Statistik 3 — nilai terverifikasi",
+            "kind": "integer",
+            "public": true,
+            "required": false,
+            "help": "Kosong/0 menyembunyikan statistik. Isi hanya angka yang sudah disetujui.",
+            "default": 0
+          },
+          {
+            "key": "rh_stat_3_label",
+            "label": "Statistik 3 — label",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Kompetensi Ahli"
+          },
+          {
+            "key": "rh_stat_3_suffix",
+            "label": "Statistik 3 — akhiran",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "+"
+          },
+          {
+            "key": "rh_stat_4_value",
+            "label": "Statistik 4 — nilai terverifikasi",
+            "kind": "integer",
+            "public": true,
+            "required": false,
+            "help": "Kosong/0 menyembunyikan statistik. Isi hanya angka yang sudah disetujui.",
+            "default": 0
+          },
+          {
+            "key": "rh_stat_4_label",
+            "label": "Statistik 4 — label",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Jurnal Ilmiah"
+          },
+          {
+            "key": "rh_stat_4_suffix",
+            "label": "Statistik 4 — akhiran",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "+"
+          }
+        ],
+        "page_roles": [
+          "home"
+        ]
+      },
+      "rh_work": {
+        "label": "Beranda — Lima karya pilihan",
+        "active": true,
+        "types": [
+          "page"
+        ],
+        "fields": [
+          {
+            "key": "rh_project_1",
+            "label": "Karya pilihan 1",
+            "kind": "relationship",
+            "public": true,
+            "required": false,
+            "target": "fwf_rm_project",
+            "help": "Pilih proyek published; draft/private/password tidak ditampilkan. Maksimal lima, urutan mengikuti slot."
+          },
+          {
+            "key": "rh_project_2",
+            "label": "Karya pilihan 2",
+            "kind": "relationship",
+            "public": true,
+            "required": false,
+            "target": "fwf_rm_project",
+            "help": "Pilih proyek published; draft/private/password tidak ditampilkan. Maksimal lima, urutan mengikuti slot."
+          },
+          {
+            "key": "rh_project_3",
+            "label": "Karya pilihan 3",
+            "kind": "relationship",
+            "public": true,
+            "required": false,
+            "target": "fwf_rm_project",
+            "help": "Pilih proyek published; draft/private/password tidak ditampilkan. Maksimal lima, urutan mengikuti slot."
+          },
+          {
+            "key": "rh_project_4",
+            "label": "Karya pilihan 4",
+            "kind": "relationship",
+            "public": true,
+            "required": false,
+            "target": "fwf_rm_project",
+            "help": "Pilih proyek published; draft/private/password tidak ditampilkan. Maksimal lima, urutan mengikuti slot."
+          },
+          {
+            "key": "rh_project_5",
+            "label": "Karya pilihan 5",
+            "kind": "relationship",
+            "public": true,
+            "required": false,
+            "target": "fwf_rm_project",
+            "help": "Pilih proyek published; draft/private/password tidak ditampilkan. Maksimal lima, urutan mengikuti slot."
+          },
+          {
+            "key": "rh_project_cta",
+            "label": "Label tombol karya",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Lihat Karya"
+          }
+        ],
+        "page_roles": [
+          "home"
+        ]
+      },
+      "rp_details": {
+        "label": "Detail proyek",
+        "active": true,
+        "types": [
+          "fwf_rm_project"
+        ],
+        "fields": [
+          {
+            "key": "rp_cover",
+            "label": "Foto utama proyek",
+            "kind": "image",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rp_location",
+            "label": "Lokasi proyek",
+            "kind": "text",
+            "public": true,
+            "required": false
+          }
+        ]
+      },
+      "rh_approach": {
+        "label": "Beranda — Spirit kerja",
+        "active": true,
+        "types": [
+          "page"
+        ],
+        "fields": [
+          {
+            "key": "rh_approach_title",
+            "label": "Judul spirit kerja",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Ketelitian dalam setiap keputusan."
+          },
+          {
+            "key": "rh_approach_description",
+            "label": "Pengantar spirit kerja",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Setiap proyek berangkat dari pemahaman konteks, data, dan kolaborasi. Prinsip-prinsip ini menjadi dasar profesionalitas dalam setiap proses berkarya, perancangan, dan pengambilan keputusan."
+          },
+          {
+            "key": "rh_approach_1_title",
+            "label": "Spirit 1 — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Integrasi Keilmuan & Praktik"
+          },
+          {
+            "key": "rh_approach_1_body",
+            "label": "Spirit 1 — uraian",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Solusi yang kami tawarkan tidak hanya kuat secara teori, tapi juga efektif dan dapat diimplementasikan di lapangan. Pengalaman sebagai akademisi mempertajam analisis, sementara pengalaman sebagai praktisi memastikan solusi yang realistis."
+          },
+          {
+            "key": "rh_approach_2_title",
+            "label": "Spirit 2 — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Inovasi Berbasis Riset"
+          },
+          {
+            "key": "rh_approach_2_body",
+            "label": "Spirit 2 — uraian",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Selalu menerapkan metodologi, material, dan teknologi terkini dalam setiap proyek untuk mencapai efisiensi biaya dan keunggulan desain."
+          },
+          {
+            "key": "rh_approach_3_title",
+            "label": "Spirit 3 — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Keamanan Tanpa Kompromi"
+          },
+          {
+            "key": "rh_approach_3_body",
+            "label": "Spirit 3 — uraian",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Keselamatan adalah prioritas mutlak. Setiap perhitungan, analisis, dan desain dibuat dengan ketelitian tinggi untuk menjamin ketahanan jangka panjang bangunan Anda."
+          },
+          {
+            "key": "rh_approach_4_title",
+            "label": "Spirit 4 — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Pendekatan Kolaboratif"
+          },
+          {
+            "key": "rh_approach_4_body",
+            "label": "Spirit 4 — uraian",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Kami percaya hasil terbaik lahir dari komunikasi yang erat. Kami bekerja sebagai mitra bagi arsitek, kontraktor, dan pemilik proyek untuk mencapai tujuan bersama."
+          }
+        ],
+        "page_roles": [
+          "home"
+        ]
+      },
+      "rh_services": {
+        "label": "Beranda — Ragam layanan",
+        "active": true,
+        "types": [
+          "page"
+        ],
+        "fields": [
+          {
+            "key": "rh_services_title",
+            "label": "Judul layanan",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Solusi Komprehensif untuk Kebutuhan Struktur Anda"
+          },
+          {
+            "key": "rh_services_description",
+            "label": "Pengantar layanan",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Dari konsep awal hingga audit bangunan yang sudah berdiri, kami menawarkan keahlian untuk memastikan setiap elemen struktur berfungsi secara optimal, aman, dan berkelanjutan."
+          },
+          {
+            "key": "rh_services_cta",
+            "label": "Label tombol layanan",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Detail Layanan"
+          },
+          {
+            "key": "rh_service_1_title",
+            "label": "Layanan 1 — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Perhitungan & Analisa Struktur"
+          },
+          {
+            "key": "rh_service_1_body",
+            "label": "Layanan 1 — uraian",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Desain struktur yang optimal, efisien, dan memenuhi standar keamanan untuk gedung bertingkat, residensial, dan komersial."
+          },
+          {
+            "key": "rh_service_2_title",
+            "label": "Layanan 2 — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Asesmen Struktur"
+          },
+          {
+            "key": "rh_service_2_body",
+            "label": "Layanan 2 — uraian",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Evaluasi mendalam terhadap kekuatan dan kelayakan struktur bangunan eksisting untuk kebutuhan renovasi, alih fungsi, atau sertifikasi."
+          },
+          {
+            "key": "rh_service_3_title",
+            "label": "Layanan 3 — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Pembuatan DED"
+          },
+          {
+            "key": "rh_service_3_body",
+            "label": "Layanan 3 — uraian",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Kelengkapan dokumen pembangunan yang lengkap, detail, dan mudah dipahami, menjadi kunci dalam kelancaran proses pembangunan."
+          },
+          {
+            "key": "rh_service_4_title",
+            "label": "Layanan 4 — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Konsultasi PBG & SLF"
+          },
+          {
+            "key": "rh_service_4_body",
+            "label": "Layanan 4 — uraian",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Pendampingan teknis dalam menyiapkan kebutuhan struktur untuk proses Persetujuan Bangunan Gedung dan Sertifikat Laik Fungsi."
+          }
+        ],
+        "page_roles": [
+          "home"
+        ]
+      },
+      "rh_knowledge": {
+        "label": "Beranda — Jurnal, tulisan, edukasi",
+        "active": true,
+        "types": [
+          "page"
+        ],
+        "fields": [
+          {
+            "key": "rh_journal_title",
+            "label": "Jurnal — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Jurnal"
+          },
+          {
+            "key": "rh_journal_body",
+            "label": "Jurnal — pengantar",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Penelitian dan pengembangan untuk pengembangan rekayasa struktur."
+          },
+          {
+            "key": "rh_journal_image",
+            "label": "Jurnal — gambar",
+            "kind": "image",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rh_journal_cta",
+            "label": "Jurnal — label tombol",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Lihat Jurnal"
+          },
+          {
+            "key": "rh_journal_target",
+            "label": "Jurnal — Page tujuan khusus",
+            "kind": "relationship",
+            "public": true,
+            "required": false,
+            "target": "page",
+            "help": "Jika kosong, mengikuti role Karya/Edukasi. Pilih Page terbit."
+          },
+          {
+            "key": "rh_writing_title",
+            "label": "Tulisan — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Tulisan"
+          },
+          {
+            "key": "rh_writing_body",
+            "label": "Tulisan — pengantar",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Catatan, pemikiran, dan pembahasan mengenai praktik dunia konstruksi."
+          },
+          {
+            "key": "rh_writing_image",
+            "label": "Tulisan — gambar",
+            "kind": "image",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rh_writing_cta",
+            "label": "Tulisan — label tombol",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Lihat Tulisan"
+          },
+          {
+            "key": "rh_writing_target",
+            "label": "Tulisan — Page tujuan khusus",
+            "kind": "relationship",
+            "public": true,
+            "required": false,
+            "target": "page",
+            "help": "Jika kosong, mengikuti role Karya/Edukasi. Pilih Page terbit."
+          },
+          {
+            "key": "rh_education_title",
+            "label": "Edukasi — judul",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Edukasi"
+          },
+          {
+            "key": "rh_education_body",
+            "label": "Edukasi — pengantar",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Berbagi pengetahuan tentang praktik lapangan, materi kuliah, dan referensi."
+          },
+          {
+            "key": "rh_education_image",
+            "label": "Edukasi — gambar",
+            "kind": "image",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rh_education_cta",
+            "label": "Edukasi — label tombol",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Lihat Edukasi"
+          },
+          {
+            "key": "rh_education_target",
+            "label": "Edukasi — Page tujuan khusus",
+            "kind": "relationship",
+            "public": true,
+            "required": false,
+            "target": "page",
+            "help": "Jika kosong, mengikuti role Karya/Edukasi. Pilih Page terbit."
+          }
+        ],
+        "page_roles": [
+          "home"
+        ]
+      },
+      "rh_closing": {
+        "label": "Beranda — Kolaborasi dan footer",
+        "active": true,
+        "types": [
+          "page"
+        ],
+        "fields": [
+          {
+            "key": "rh_contact_title",
+            "label": "Judul kolaborasi",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Mari Mulai Percakapan."
+          },
+          {
+            "key": "rh_contact_description",
+            "label": "Pengantar kolaborasi",
+            "kind": "textarea",
+            "public": true,
+            "required": false,
+            "default": "Konsultasi proyek, kolaborasi profesional, atau diskusi akademik. Kami terbuka untuk berbagi ide dan peluang bersama."
+          },
+          {
+            "key": "rh_contact_cta",
+            "label": "Label tombol kontak",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Kanal Komunikasi"
+          },
+          {
+            "key": "rh_contact_image",
+            "label": "Foto kolaborasi",
+            "kind": "image",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rh_footer_brand",
+            "label": "Identitas ringkas footer",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "RME"
+          },
+          {
+            "key": "rh_footer_tagline",
+            "label": "Tagline footer",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "Precision in Every Structure"
+          },
+          {
+            "key": "rh_footer_name",
+            "label": "Nama besar footer",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "RIZAL MAULANA ENGINEERING"
+          },
+          {
+            "key": "rh_footer_copyright",
+            "label": "Copyright footer",
+            "kind": "text",
+            "public": true,
+            "required": false,
+            "default": "© Rizal Maulana Engineering | website by asukayalab"
+          },
+          {
+            "key": "rh_social_linkedin",
+            "label": "Tautan Linkedin",
+            "kind": "url",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rh_social_instagram",
+            "label": "Tautan Instagram",
+            "kind": "url",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rh_social_facebook",
+            "label": "Tautan Facebook",
+            "kind": "url",
+            "public": true,
+            "required": false
+          },
+          {
+            "key": "rh_social_threads",
+            "label": "Tautan Threads",
+            "kind": "url",
+            "public": true,
+            "required": false
+          }
+        ],
+        "page_roles": [
+          "home"
+        ]
+      }
+    },
+    "types": {
+      "fwf_rm_project": {
+        "label": "Proyek Rizal",
+        "active": true,
+        "slug": "proyek",
+        "model": "post"
+      }
+    }
+  },
+  "instructions": [
+    "Petakan maintenance ke Page existing agar rm_* dan konten lama tetap digunakan; jangan membuat duplikat.",
+    "Beranda memakai named template page-home.php. Pilih homepage melalui WordPress secara terpisah. Dispatcher front-page.php menghormati template Page yang dipilih, termasuk maintenance.",
+    "Enam Page utama dan maintenance dibuat sebagai draft melalui Review/Apply manusia. Isi halaman selain Beranda/maintenance memakai editor native.",
+    "Gunakan keep untuk definisi maintenance yang sudah ada; jangan mengubah kind/target rm_* atau menghapus nilai existing.",
+    "Seluruh copy baru adalah draft kerja berdasarkan PDF/brief; review klaim, layanan, ejaan, foto dan hak penggunaan sebelum publish.",
+    "Statistik default 0 tersembunyi; pilih maksimal lima Proyek Rizal published yang benar-benar terverifikasi. Jangan isi angka/proyek rekaan.",
+    "Foto bawaan hanya referensi desain sementara. Pilih gambar Media Library sebelum peluncuran. Blueprint tidak mengimpor media.",
+    "Tautan navigasi mengikuti menu WordPress atau role Page published aktual. Role draft tidak membuat tautan publik.",
+    "Aktivasi theme, pengisian konten, menu, homepage, SEO dan publikasi tetap tindakan manusia. Tidak ada migrasi data otomatis dari trialrizal."
+  ]
+}

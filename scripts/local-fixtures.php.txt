@@ -1,0 +1,50 @@
+<?php
+/** Isolated visual fixture ONLY. Never execute against a client/production installation. */
+use FalconWF\Content\Blueprint;
+use FalconWF\Content\Repository;
+use FalconWF\Content\Schema;
+if (wp_get_environment_type() !== 'local' || get_option('home') !== 'http://localhost:8096' || get_bloginfo('name') !== 'Rizal Design Preview') { throw new RuntimeException('Refusing fixture outside the dedicated Rizal local preview.'); }
+wp_set_current_user(1);
+require_once ABSPATH . 'wp-admin/includes/post.php';
+function rizal_checked($value) { if (is_wp_error($value)) { throw new RuntimeException($value->get_error_message()); } return $value; }
+$current = rizal_checked(Blueprint::discover());
+if (($current['state']['status'] ?? '') !== 'applied') {
+ $input = ['revision' => $current['revision'], 'targets' => [], 'modes' => [], 'definitions' => [], 'seo' => 'keep'];
+ foreach ($current['document']['pages'] as $page) { $existing = $current['state']['roles'][$page['key']] ?? 0; $input['targets'][$page['key']] = $existing ? (string)$existing : 'new'; $input['modes'][$page['key']] = 'new'; }
+ foreach ($current['document']['definitions'] as $section => $definitions) { foreach ($definitions as $key => $_) { $input['definitions'][$section . '/' . $key] = 'new'; } }
+ rizal_checked(Blueprint::apply(rizal_checked(Blueprint::review($input)), true));
+}
+$state = Blueprint::state('rizalmaulana');
+$home = $state['roles']['home'];
+$repo = FalconWF\Bootstrap::instance()->content;
+foreach ($state['roles'] as $role => $id) {
+ rizal_checked(wp_update_post(['ID' => $id, 'post_status' => 'publish', 'post_content' => in_array($role, ['home','maintenance'], true) ? '' : 'Halaman ini adalah tujuan navigasi untuk preview lokal. Isi final akan disusun terpisah.'], true));
+}
+$fields = Schema::values($home, 'page');
+$fields['rh_hero_title'] = 'Kepastian Struktur.';
+$fields['rh_hero_secondary'] = 'Kebebasan Arsitektur.';
+$sample = [10, 500, 5, 25];
+foreach ($sample as $i => $number) { $fields['rh_stat_' . ($i + 1) . '_value'] = $number; }
+$projectIDs = get_option('rizal_fixture_projects', []);
+if (!$projectIDs) {
+ for ($i = 1; $i <= 5; $i++) {
+  $draft = rizal_checked($repo->create('fwf_rm_project', ['title' => 'Contoh karya ' . str_pad((string)$i, 2, '0', STR_PAD_LEFT), 'body' => 'Data simulasi untuk menguji tampilan dan navigasi. Bukan proyek terverifikasi Rizal.', 'rp_location' => 'Lokasi contoh']));
+  $projectIDs[] = $draft['id'];
+ }
+ update_option('rizal_fixture_projects', $projectIDs, false);
+}
+foreach ($projectIDs as $i => $id) { rizal_checked(wp_update_post(['ID' => $id, 'post_status' => 'publish'], true)); $fields['rh_project_' . ($i + 1)] = $id; }
+rizal_checked($repo->saveFields($home, Repository::metadataRevision($home, 'page'), $fields));
+update_option('show_on_front', 'page'); update_option('page_on_front', $home); update_option('blog_public', 0);
+// Contact values only from the user supplied maintenance reference, for local visual matching.
+$maintenance = $state['roles']['maintenance'];
+$maintenanceFields = Schema::values($maintenance, 'page');
+$maintenanceFields['rm_whatsapp'] = 'https://wa.me/628186360014';
+$maintenanceFields['rm_instagram'] = 'https://www.instagram.com/rizalmaulana13/';
+$maintenanceFields['rm_email'] = 'rizalmaulana@gmail.com';
+rizal_checked($repo->saveFields($maintenance, Repository::metadataRevision($maintenance, 'page'), $maintenanceFields));
+// Local-only banner lives in this throwaway installation, never in the theme ZIP.
+$mu = WP_CONTENT_DIR . '/mu-plugins'; wp_mkdir_p($mu);
+file_put_contents($mu . '/rizal-fixture.php', '<?php add_action("wp_body_open", static function () { echo \'<aside style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#171717;color:#fff;padding:6px 12px;font:12px Arial;text-align:center">Preview desain lokal. Angka, proyek, dan foto adalah contoh; belum untuk publikasi.</aside>\'; });');
+echo "Blueprint applied; 7 mapped Pages; 5 explicitly labelled sample projects; fields saved through Falcon Repository.\n";
+echo json_encode(['home'=>$home,'maintenance'=>$state['roles']['maintenance'],'projects'=>$projectIDs]);
