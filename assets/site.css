@@ -239,3 +239,13 @@ figure { margin: 0; }
 @media (max-width: 782px) { .admin-bar .rizal-header { inset-block-start: 62px; } }
 
 .menu-panel .nav-list a { color: var(--color-menu-ink); }
+
+/* Restore the section labels explicitly specified in the owner's PDF.
+   Their uppercase pill treatment is part of the supplied design. */
+.section-label { display: table; width: fit-content; max-width: 100%; margin: 0 0 var(--space-lg); padding: var(--space-2xs) var(--space-sm); border: 1px solid currentColor; border-radius: var(--radius-pill); color: var(--color-muted); font-family: var(--font-body); font-size: clamp(.75rem,1vw,.875rem); font-weight: 300; line-height: 1.25; letter-spacing: 0; }
+.hero-content > .section-label { animation: arrive 1100ms var(--ease-out) 200ms both; }
+.project-toolbar > .section-label { margin: 0; padding: var(--space-2xs) var(--space-sm); color: var(--color-muted); border-color: var(--color-paper); }
+.knowledge-label { margin-block-end: var(--space-xl); }
+@media (prefers-reduced-motion: reduce) { .hero-content > .section-label { animation: none; } }
+
+.section-label:empty { display: none; }

@@ -15,6 +15,7 @@ $contact = role('contact');
       <div class="hero-photo"><?php image('rh_hero_image', 'hero', '', true); ?></div>
       <div class="hero-mist" aria-hidden="true"></div>
       <div class="container hero-content">
+        <p class="section-label"><?php echo esc_html(text('rh_hero_label', 'STRUCTURAL ENGINEER')); ?></p>
         <h1 id="hero-title"><span class="hero-primary"><?php echo nl2br(esc_html(text('rh_hero_title'))); ?></span><span class="hero-secondary"><?php echo nl2br(esc_html(text('rh_hero_secondary'))); ?></span></h1>
         <p class="hero-description"><?php echo esc_html(text('rh_hero_description')); ?></p>
         <?php link($contact, text('rh_hero_cta')); ?>
@@ -25,7 +26,7 @@ $contact = role('contact');
     <div class="container profile-grid">
       <figure class="profile-photo" data-reveal><?php image('rh_profile_image', 'profile', text('rh_profile_alt')); ?></figure>
       <div class="profile-copy">
-        <div data-reveal><h2 id="profile-title"><?php echo esc_html(text('rh_profile_title')); ?></h2><p class="section-description"><?php echo esc_html(text('rh_profile_description')); ?></p><?php link(role('profile'), text('rh_profile_cta')); ?></div>
+        <div data-reveal><p class="section-label"><?php echo esc_html(text('rh_profile_label', 'RIZAL MAULANA ENGINEERING')); ?></p><h2 id="profile-title"><?php echo esc_html(text('rh_profile_title')); ?></h2><p class="section-description"><?php echo esc_html(text('rh_profile_description')); ?></p><?php link(role('profile'), text('rh_profile_cta')); ?></div>
         <dl class="statistics">
           <?php for ($i = 1; $i <= 4; $i++): $number = value('rh_stat_' . $i . '_value', 0); $label = text('rh_stat_' . $i . '_label'); if ((int)$number <= 0 || $label === '') { continue; } ?>
           <div class="statistic" data-reveal><dd><span data-count="<?php echo esc_attr((string)$number); ?>"><?php echo esc_html((string)$number); ?></span><span><?php echo esc_html(text('rh_stat_' . $i . '_suffix')); ?></span></dd><dt><?php echo esc_html($label); ?></dt></div>
@@ -44,12 +45,12 @@ $contact = role('contact');
       </article>
       <?php endforeach; ?>
     </div>
-    <div class="container project-toolbar"><span>Karya pilihan</span><div class="slider-controls" hidden><button type="button" data-project-prev aria-label="Karya sebelumnya"><?php echo icon('left'); ?></button><output data-project-status aria-live="polite">01 / <?php echo esc_html(str_pad((string)count($projects), 2, '0', STR_PAD_LEFT)); ?></output><button type="button" data-project-next aria-label="Karya berikutnya"><?php echo icon('right'); ?></button></div></div>
+    <div class="container project-toolbar"><span class="section-label"><?php echo esc_html(text('rh_project_label', 'KARYA PILIHAN')); ?></span><div class="slider-controls" hidden><button type="button" data-project-prev aria-label="Karya sebelumnya"><?php echo icon('left'); ?></button><output data-project-status aria-live="polite">01 / <?php echo esc_html(str_pad((string)count($projects), 2, '0', STR_PAD_LEFT)); ?></output><button type="button" data-project-next aria-label="Karya berikutnya"><?php echo icon('right'); ?></button></div></div>
   </section>
   <?php endif; ?>
   <section id="pendekatan" class="approach-section paper-section" aria-labelledby="approach-title" data-approach>
     <div class="approach-pin container">
-      <div class="approach-heading"><h2 id="approach-title"><?php echo esc_html(text('rh_approach_title')); ?></h2><p class="section-description"><?php echo esc_html(text('rh_approach_description')); ?></p></div>
+      <div class="approach-heading"><div><p class="section-label"><?php echo esc_html(text('rh_approach_label', 'SPIRIT KERJA')); ?></p><h2 id="approach-title"><?php echo esc_html(text('rh_approach_title')); ?></h2></div><p class="section-description"><?php echo esc_html(text('rh_approach_description')); ?></p></div>
       <div class="approach-items">
         <?php for ($i = 1; $i <= 4; $i++): ?>
         <article class="approach-item" id="approach-<?php echo $i; ?>"><span class="approach-number" aria-hidden="true"><?php echo '0' . $i; ?></span><h3><?php echo esc_html(text('rh_approach_' . $i . '_title')); ?></h3><p><?php echo esc_html(text('rh_approach_' . $i . '_body')); ?></p></article>
@@ -60,11 +61,11 @@ $contact = role('contact');
   </section>
   <section id="layanan" class="services-section paper-section" aria-labelledby="services-title">
     <div class="container services-grid">
-      <div class="services-intro" data-reveal><h2 id="services-title"><?php echo esc_html(text('rh_services_title')); ?></h2><p class="section-description"><?php echo esc_html(text('rh_services_description')); ?></p><?php link(role('services'), text('rh_services_cta')); ?></div>
+      <div class="services-intro" data-reveal><p class="section-label"><?php echo esc_html(text('rh_services_label', 'RAGAM LAYANAN')); ?></p><h2 id="services-title"><?php echo esc_html(text('rh_services_title')); ?></h2><p class="section-description"><?php echo esc_html(text('rh_services_description')); ?></p><?php link(role('services'), text('rh_services_cta')); ?></div>
       <div class="service-cards"><?php for ($i = 1; $i <= 4; $i++): ?><article class="service-card" data-reveal><span class="service-number" aria-hidden="true"><?php echo '0' . $i; ?></span><h3><?php echo esc_html(text('rh_service_' . $i . '_title')); ?></h3><p><?php echo esc_html(text('rh_service_' . $i . '_body')); ?></p></article><?php endfor; ?></div>
     </div>
   </section>
-  <section id="pengetahuan" class="knowledge-section paper-section" aria-label="Jurnal, tulisan, dan edukasi"><div class="container knowledge-list">
+  <section id="pengetahuan" class="knowledge-section paper-section" aria-label="Jurnal, tulisan, dan edukasi"><div class="container"><p class="section-label knowledge-label" data-reveal><?php echo esc_html(text('rh_knowledge_label', 'KARYA LAINNYA')); ?></p></div><div class="container knowledge-list">
     <?php foreach (['journal' => 'work', 'writing' => 'work', 'education' => 'education'] as $key => $target): ?>
     <article class="knowledge-row" data-reveal><h2><?php echo esc_html(text('rh_' . $key . '_title')); ?></h2><figure><?php image('rh_' . $key . '_image', ['journal' => 'hero', 'writing' => 'knowledge', 'education' => 'project'][$key]); ?></figure><div class="knowledge-copy"><p><?php echo esc_html(text('rh_' . $key . '_body')); ?></p><?php $custom = value('rh_' . $key . '_target', 0); $targetPost = $custom ? get_post((int)$custom) : null; $url = $targetPost && $targetPost->post_status === 'publish' && $targetPost->post_password === '' ? get_permalink($targetPost) : role($target); link($url, text('rh_' . $key . '_cta')); ?></div></article>
     <?php endforeach; ?>

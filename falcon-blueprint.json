@@ -197,6 +197,15 @@
         ],
         "fields": [
           {
+            "key": "rh_hero_label",
+            "label": "Label kecil hero",
+            "kind": "text",
+            "default": "STRUCTURAL ENGINEER",
+            "public": true,
+            "required": false,
+            "help": "Label desain acuan. Nilai kosong menyembunyikan label. Template memiliki fallback untuk instalasi alpha.1 sebelum Review/Apply struktur alpha.2."
+          },
+          {
             "key": "rh_hero_title",
             "label": "Headline — kepastian struktur",
             "kind": "textarea",
@@ -247,6 +256,15 @@
           "page"
         ],
         "fields": [
+          {
+            "key": "rh_profile_label",
+            "label": "Label kecil profil",
+            "kind": "text",
+            "default": "RIZAL MAULANA ENGINEERING",
+            "public": true,
+            "required": false,
+            "help": "Label desain acuan. Nilai kosong menyembunyikan label. Template memiliki fallback untuk instalasi alpha.1 sebelum Review/Apply struktur alpha.2."
+          },
           {
             "key": "rh_profile_title",
             "label": "Judul profil",
@@ -399,6 +417,15 @@
         ],
         "fields": [
           {
+            "key": "rh_project_label",
+            "label": "Label kecil karya",
+            "kind": "text",
+            "default": "KARYA PILIHAN",
+            "public": true,
+            "required": false,
+            "help": "Label desain acuan. Nilai kosong menyembunyikan label. Template memiliki fallback untuk instalasi alpha.1 sebelum Review/Apply struktur alpha.2."
+          },
+          {
             "key": "rh_project_1",
             "label": "Karya pilihan 1",
             "kind": "relationship",
@@ -486,6 +513,15 @@
           "page"
         ],
         "fields": [
+          {
+            "key": "rh_approach_label",
+            "label": "Label kecil spirit kerja",
+            "kind": "text",
+            "default": "SPIRIT KERJA",
+            "public": true,
+            "required": false,
+            "help": "Label desain acuan. Nilai kosong menyembunyikan label. Template memiliki fallback untuk instalasi alpha.1 sebelum Review/Apply struktur alpha.2."
+          },
           {
             "key": "rh_approach_title",
             "label": "Judul spirit kerja",
@@ -578,6 +614,15 @@
           "page"
         ],
         "fields": [
+          {
+            "key": "rh_services_label",
+            "label": "Label kecil layanan",
+            "kind": "text",
+            "default": "RAGAM LAYANAN",
+            "public": true,
+            "required": false,
+            "help": "Label desain acuan. Nilai kosong menyembunyikan label. Template memiliki fallback untuk instalasi alpha.1 sebelum Review/Apply struktur alpha.2."
+          },
           {
             "key": "rh_services_title",
             "label": "Judul layanan",
@@ -678,6 +723,15 @@
           "page"
         ],
         "fields": [
+          {
+            "key": "rh_knowledge_label",
+            "label": "Label kecil karya lainnya",
+            "kind": "text",
+            "default": "KARYA LAINNYA",
+            "public": true,
+            "required": false,
+            "help": "Label desain acuan. Nilai kosong menyembunyikan label. Template memiliki fallback untuk instalasi alpha.1 sebelum Review/Apply struktur alpha.2."
+          },
           {
             "key": "rh_journal_title",
             "label": "Jurnal — judul",

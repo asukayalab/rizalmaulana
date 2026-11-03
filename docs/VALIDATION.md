@@ -33,3 +33,9 @@ Menggantikan penyederhanaan maintenance pada implementasi awal: komposisi, bobot
 Roboto normal diambil dari font variable yang tertanam pada acuan; italic variable lengkap berasal dari repositori resmi Google Fonts. Metadata fontTools membuktikan sumbu wght 100–900 pada kedua file. Font di-host lokal dan teks lisensi OFL ikut dalam runtime fonts.css. Tidak ada permintaan font ke Google saat halaman dibuka.
 
 Menu berubah menjadi header yang mengikuti scroll, nama RIZAL MAULANA memakai weight 300, panel putih/teks hitam dan tombol hitam. Cek browser fokus revisi lulus: family/weight aktual, posisi header setelah scroll, warna panel, maintenance weight 900/300/italic, dekorasi, dua CTA, tidak ada overflow pada 320/390 px, reduced motion, dan tanpa error JavaScript. Screenshot desktop/HP sudah ditinjau. Pemeriksaan PHP untuk dua file yang berubah dan build paket lulus. Hasil Hallmark penuh di atas adalah hasil implementasi awal; bukan audit ulang untuk styling maintenance acuan yang sengaja dipertahankan.
+
+## Koreksi label seksi — alpha.2
+
+HTML publik https://rizalmaulana.id dibaca dengan HTTP 200 pada 3 November 2026 WIB. Lima label tidak ada pada template alpha.1; seksi Karya Pilihan tidak dirender di live karena daftar proyek yang lolos seleksi kosong. Label tersebut tetap kondisional mengikuti seksi, bukan dibuat dengan data rekaan.
+
+Template alpha.2 memulihkan lima label dan menyamakan kapital/gaya label Karya Pilihan, plus enam field opsional dengan fallback untuk schema lama. Local upgrade tanpa Apply ulang blueprint lulus 13 regresi existing dan PHP lint. Browser di 390/1280/1440 px memverifikasi seluruh enam label pada fixture dengan proyek terpilih, tanpa overflow dan CTA hero masih di viewport. Paket alpha.2 dibangun terpisah; alpha.1 tidak ditimpa. Belum commit/push/hosting oleh Codex.

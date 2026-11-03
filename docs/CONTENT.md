@@ -28,3 +28,7 @@ Mobile: satu kolom, profil dan layanan tidak sticky; statistik dua kolom, karya 
 ## Materi yang perlu disetujui
 
 Foto hero arsitektur 16:9 (minimal 1600 px), foto profil vertikal 4:5, foto untuk maksimal lima proyek beserta judul/lokasi/peran asli, tiga gambar pengetahuan 16:9, foto kolaborasi 16:9, logo RME vector asli jika ingin mengganti identitas teks, font Roboto variable normal/italic 100–900 sudah dibundel lokal beserta OFL, angka statistik, kanal komunikasi dan tautan sosial. Satu materi paling membantu berikutnya: daftar lima proyek terpilih dengan foto dan peran Rizal yang terverifikasi.
+
+## Label seksi — alpha.2
+
+Enam label outline dari PDF dikembalikan: STRUCTURAL ENGINEER, RIZAL MAULANA ENGINEERING, KARYA PILIHAN, SPIRIT KERJA, RAGAM LAYANAN dan KARYA LAINNYA. Label dapat diedit lewat enam field opsional rh_*_label setelah Review/Apply struktur baru. Update kode saja langsung menampilkan fallback desain pada schema alpha.1. Label Karya Pilihan mengikuti visibilitas seksi proyek: pilih minimal satu Proyek Rizal published pada slot Beranda untuk memunculkannya. Tidak ada proyek dummy yang diimpor ke hosting.
